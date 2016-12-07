@@ -28,6 +28,16 @@ namespace Kalkulator
         {
             this.DragMove();
         }
+        
+          private void zamykanie(object sender, EventArgs e)
+        {
+           Environment.Exit(0);
+        }
+        
+        private void minimalizacja(object sender, EventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
 
 
     }
