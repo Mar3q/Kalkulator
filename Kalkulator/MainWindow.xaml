@@ -18,9 +18,9 @@
          <!--Menu-->
          <Menu Margin="97,5,46,377" Grid.Column="1">
             <MenuItem Header="Plik">
-                <MenuItem Header="Minimalizuj" Height="17" Margin="0,0,-21,0" ></MenuItem>
+                <MenuItem Header="Minimalizuj" Height="17" Margin="0,0,-21,0" Click="minimalizacja"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Zamknij" Height="17" Margin="0,0,-21,0" ></MenuItem>
+                <MenuItem Header="Zamknij" Height="17" Margin="0,0,-21,0" Click="zamykanie"></MenuItem>
             </MenuItem>
         </Menu>
         <!--Operandy-->
