@@ -14,7 +14,15 @@
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\Susano\Desktop\tlo.png"/>
         </Grid.Background>
-        
+            
+         <!--Menu-->
+         <Menu Margin="97,5,46,377" Grid.Column="1">
+            <MenuItem Header="Plik">
+                <MenuItem Header="Minimalizuj" Height="17" Margin="0,0,-21,0" ></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Zamknij" Height="17" Margin="0,0,-21,0" ></MenuItem>
+            </MenuItem>
+        </Menu>
         <!--Operandy-->
         <Button x:Name="zero" Content="0" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,308,87,62" Width="30" Height="30"/>
         <Button x:Name="jeden" Content="1" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,262,87,108" Width="30" Height="30"/>
