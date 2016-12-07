@@ -14,7 +14,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\Susano\Desktop\tlo.png"/>
         </Grid.Background>
-
+        
         <!--Operandy-->
         <Button x:Name="zero" Content="0" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,308,87,62" Width="30" Height="30"/>
         <Button x:Name="jeden" Content="1" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,262,87,108" Width="30" Height="30"/>
@@ -26,7 +26,7 @@
         <Button x:Name="siedem" Content="7" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,169,0,201" Width="30" Height="30" HorizontalAlignment="Left"/>
         <Button x:Name="osiem" Content="8" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,169,40,201" Width="30" Height="30"/>
         <Button x:Name="dziewiec" Content="9" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,169,164,201" Width="30" Height="30" Grid.ColumnSpan="2"/>
-
+        
         <!--Funkcje podstawowe-->
         <Button x:Name="kropka" Content="." BorderBrush="#FF404040" Background="{x:Null}" Margin="107,308,40,62" Width="30" Height="30"/>
         <Button x:Name="rowna" Content="=" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,308,164,62" Width="30" Height="30" Grid.ColumnSpan="2"/>
@@ -38,7 +38,7 @@
         <Button x:Name="odejmowanie" Content="-" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,288,68,82" Width="30" Height="30" Grid.Column="1"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="108" Margin="34,29,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="177" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
         <Button x:Name="czysc" Content="C" BorderBrush="{x:Null}" Background="{x:Null}" Margin="120,245,23,125" Width="30" Height="30" Grid.Column="1"/>
-
+        
         <!--Funkcje okresowe-->
         <Button x:Name="sin" Content="sin(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,61,19,309" Height="30" Grid.Column="1"/>
         <Button x:Name="cos" Content="cos(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,105,19,265" Height="30" Grid.Column="1"/>
