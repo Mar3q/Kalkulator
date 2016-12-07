@@ -38,7 +38,11 @@ namespace Kalkulator
         {
             this.WindowState = WindowState.Minimized;
         }
-
+        
+        private void info(object sender, EventArgs e)
+        {
+             MessageBox.Show("Nazwa programu: Kalkulator \nAutorzy: Mariusz Bubrowski i Marek Dąbrowski");
+        }
 
     }
 }
