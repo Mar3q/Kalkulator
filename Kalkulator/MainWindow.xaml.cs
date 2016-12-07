@@ -25,7 +25,7 @@ namespace Kalkulator
             InitializeComponent();
         }
         #region
-        
+        //sdada
         #endregion 
     }
 }
