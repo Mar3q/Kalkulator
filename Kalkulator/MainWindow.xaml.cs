@@ -55,7 +55,7 @@ namespace Kalkulator
              MessageBox.Show("Nazwa programu: Kalkulator \nAutorzy: Mariusz Bubrowski i Marek Dąbrowski");
         }
         private Działanie OstatnioWybraneDzialanie = Działanie.brak;
-        
+
         private void liczba_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Działanie.wynik == OstatnioWybraneDzialanie)
