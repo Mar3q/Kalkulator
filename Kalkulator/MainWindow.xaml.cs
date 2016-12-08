@@ -112,7 +112,7 @@ namespace Kalkulator
             }
         }
 
-        private void s_Click(object sender, RoutedEventArgs e)
+        private void sin_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = 's';
             gdzieWpisać = true;
@@ -121,5 +121,35 @@ namespace Kalkulator
             czyWyczyścićPasekWyniku = true;
 
         }
+        private void cos_Click(object sender, RoutedEventArgs e)
+        {
+            obliczenia.działanie = 'c';
+            gdzieWpisać = true;
+            obliczenia.operand1 = obliczenia.licz();
+            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            czyWyczyścićPasekWyniku = true;
+
+        }
+        private void tan_Click(object sender, RoutedEventArgs e)
+        {
+            obliczenia.działanie = 't';
+            gdzieWpisać = true;
+            obliczenia.operand1 = obliczenia.licz();
+            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            czyWyczyścićPasekWyniku = true;
+
+           
+        }
+
+        private void ctan_Click(object sender, RoutedEventArgs e)
+        {
+            obliczenia.działanie = 'g';
+            gdzieWpisać = true;
+            obliczenia.operand1 = obliczenia.licz();
+            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            czyWyczyścićPasekWyniku = true;
+        }
+
+        
     }
 }
