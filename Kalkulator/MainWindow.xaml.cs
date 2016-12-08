@@ -15,22 +15,12 @@ using System.Windows.Shapes;
 
 namespace Kalkulator
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-
-    enum Działanie
-    {
-        brak = 0,
-        dodawanie,
-        odejmowanie,
-        mnozenie,
-        dzielenie,
-        wynik
-    }
-
     public partial class MainWindow : Window
     {
+        Obliczenia obliczenia = new Obliczenia();
+        bool gdzieWpisać = true;
+        bool czyWyczyścićPasekWyniku = false;//jeśli jest równe true, to przy wpisaniu liczby pasek wyniku zostanie wyczyszczony
+        #region Okienko
         public MainWindow()
         {
             InitializeComponent();
@@ -39,124 +29,97 @@ namespace Kalkulator
         {
             this.DragMove();
         }
-        
-          private void zamykanie(object sender, EventArgs e)
+
+        private void zamykanie(object sender, EventArgs e)
         {
-           Environment.Exit(0);
+            Environment.Exit(0);
         }
-        
+
         private void minimalizacja(object sender, EventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
-        
+
         private void info(object sender, EventArgs e)
         {
-             MessageBox.Show("Nazwa programu: Kalkulator \nAutorzy: Mariusz Bubrowski i Marek Dąbrowski");
+            MessageBox.Show("Nazwa programu: Kalkulator \nAutorzy: Mariusz Bubrowski i Marek Dąbrowski");
         }
-        private Działanie OstatnioWybraneDzialanie = Działanie.brak;
-
-        private void liczba_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+        #endregion 
+        private void liczba_Click(object sender, RoutedEventArgs e)
         {
-            if (Działanie.wynik == OstatnioWybraneDzialanie)
-            {
-                Wynik.Text = string.Empty;
-                OstatnioWybraneDzialanie = Działanie.brak;
-            }
-            Button oButton = (Button)oSender;
-            Wynik.Text += oButton.Content;
+            if (czyWyczyścićPasekWyniku)
+                Wynik.Text = (sender as Button).Content.ToString();//pozdrowienia dla Jim1961 http://www.dobreprogramy.pl/Description_1/Piszemy-prosty-kalkulator-w-CNET,39126.html#komentarz_1116074
+            else
+                Wynik.Text += (sender as Button).Content.ToString();
+            czyWyczyścićPasekWyniku = false;
         }
-
-        private void przecinek_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+        private void działanie_Click(object sender, RoutedEventArgs e)
         {
-            if (Działanie.wynik == OstatnioWybraneDzialanie)
-            {
-                Wynik.Text = string.Empty;
-                OstatnioWybraneDzialanie = Działanie.brak;
-            }
-            if ((Wynik.Text.Contains(',')) ||
-                (0 == Wynik.Text.Length))
-            {
-                return;
-            }
-            Wynik.Text += ",";
+            obliczenia.działanie = (sender as Button).Content.ToString()[0];
+            czyWyczyścićPasekWyniku = true;//czyścimy pasek tekstowy
+            gdzieWpisać = false;
         }
-
-        private void czyszczenie_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+        private void silnia_Click(object sender, RoutedEventArgs e)
         {
-            Wynik.Text = string.Empty;
-            Pamiec.Text = string.Empty;
-            Operacja.Text = string.Empty;
-            OstatnioWybraneDzialanie = Działanie.brak;
+            obliczenia.działanie = '!';
+            gdzieWpisać = true;
+            obliczenia.operand1 = obliczenia.licz();
+            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            czyWyczyścićPasekWyniku = true;
         }
-
-        private void działanie_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+        private void systemBinarny_Click(object sender, RoutedEventArgs e)
+        {
+            Wynik.Text = Convert.ToString((int)obliczenia.operand1, 2);
+        }
+        private void przecinek_Click(object sender, RoutedEventArgs e)
+        {
+            if (czyWyczyścićPasekWyniku)
+                Wynik.Text = "0,";
+            else
+                Wynik.Text += ",";
+            czyWyczyścićPasekWyniku = false;
+        }
+        private void czyszczenie_Click(object sender, RoutedEventArgs e)
+        {
+            obliczenia.operand1 = obliczenia.operand2 = 0;
+            obliczenia.działanie = ' ';
+            Wynik.Text = "";
+            czyWyczyścićPasekWyniku = false;
+            gdzieWpisać = true;
+        }
+        private void wynik_Click(object sender, RoutedEventArgs e)
+        {
+            gdzieWpisać = true;
+            obliczenia.operand1 = obliczenia.licz();
+            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            czyWyczyścićPasekWyniku = true;
+        }
+        private void Wynik_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            if ((Działanie.brak != OstatnioWybraneDzialanie) || (Działanie.wynik != OstatnioWybraneDzialanie))
+
+            try
             {
-                wynik_Click(this, eRoutedEventArgs);
+                if (gdzieWpisać)
+                    obliczenia.operand1 = double.Parse(Wynik.Text);
+                else
+                    obliczenia.operand2 = double.Parse(Wynik.Text);
             }
-            Button oButton = (Button)oSender;
-            switch (oButton.Content.ToString())
+            catch (FormatException wyjątek)//jeśli wprowadzono błędnie liczbę wykonuje poniższy kod
             {
-                case "+":
-                    OstatnioWybraneDzialanie = Działanie.dodawanie;
-                    break;
-                case "-":
-                    OstatnioWybraneDzialanie = Działanie.odejmowanie;
-                    break;
-                case "*":
-                    OstatnioWybraneDzialanie = Działanie.mnozenie;
-                    break;
-                case "/":
-                    OstatnioWybraneDzialanie = Działanie.dzielenie;
-                    break;
-                default:
-                    MessageBox.Show("Nieznana operacja!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                if (Wynik.Text != "")
+                    MessageBox.Show("Nie wpisano prawidłowo liczby", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);//komunikat o błędzie, ale tylko, jeśli pole nie jest puste
             }
-            Pamiec.Text = Wynik.Text;
-            Operacja.Text = oButton.Content.ToString();
-            Wynik.Text = string.Empty;
         }
 
-        private void wynik_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+        private void s_Click(object sender, RoutedEventArgs e)
         {
-            // Nie wykonywano operacji, nie można wyliczyć wyniku
-            if ((Działanie.wynik == OstatnioWybraneDzialanie) ||
-                (Działanie.brak == OstatnioWybraneDzialanie))
-            {
-                return;
-            }
-            if (string.IsNullOrEmpty(Wynik.Text))
-            {
-                Wynik.Text = "0";
-            }
-            switch (OstatnioWybraneDzialanie)
-            {
-                case Działanie.dodawanie:
-                    Wynik.Text = (double.Parse(Pamiec.Text) +
-                        double.Parse(Wynik.Text)).ToString();
-                    break;
-                case Działanie.odejmowanie:
-                    Wynik.Text = (double.Parse(Pamiec.Text) -
-                        double.Parse(Wynik.Text)).ToString();
-                    break;
-                case Działanie.mnozenie:
-                    Wynik.Text = (double.Parse(Pamiec.Text) *
-                        double.Parse(Wynik.Text)).ToString();
-                    break;
-                case Działanie.dzielenie:
-                    Wynik.Text = (double.Parse(Pamiec.Text) /
-                        double.Parse(Wynik.Text)).ToString();
-                    break;
-            }
-            OstatnioWybraneDzialanie = Działanie.wynik;
-            Operacja.Text = string.Empty;
-            Pamiec.Text = string.Empty;
+            obliczenia.działanie = 's';
+            gdzieWpisać = true;
+            obliczenia.operand1 = obliczenia.licz();
+            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            czyWyczyścićPasekWyniku = true;
+
         }
-
-
     }
 }
