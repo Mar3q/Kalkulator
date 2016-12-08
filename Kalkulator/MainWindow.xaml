@@ -1,4 +1,4 @@
-﻿<Window x:Class="Kalkulator.MainWindow"
+ ﻿<Window x:Class="Kalkulator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,7 +16,7 @@
         </Grid.Background>
             
          <!--Menu-->
-         <Menu Margin="44,9,84,373">
+         <Menu Margin="44,9,84,373" Width="49">
             <MenuItem Header="Plik">
                 <MenuItem Header="O programie" Height="17" Margin="0,0,-21,0" Click="info"/>
                 <Separator/>
@@ -40,7 +40,7 @@
                 Click="liczba_Click"/>
         <Button x:Name="szesc" Content="6" BorderBrush="#FF404040" Background="{x:Null}" Margin="136,240,11,130" Width="30" Height="30"
                 Click="liczba_Click"/>
-        <Button x:Name="siedem" Content="7" BorderBrush="#FF404040" Margin="56,200,0,170" Width="30" Height="30" HorizontalAlignment="Left"
+        <Button x:Name="siedem" Content="7" BorderBrush="#FF404040" Background="{x:Null}" Margin="56,200,0,170" Width="30" Height="30" HorizontalAlignment="Left"
                 Click="liczba_Click"/>
         <Button x:Name="osiem" Content="8" BorderBrush="#FF404040" Background="{x:Null}" Margin="96,200,51,170" Width="30" Height="30" 
                 Click="liczba_Click"/>
