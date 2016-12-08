@@ -11,8 +11,8 @@
             <ColumnDefinition Width="177*"/>
             <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
-        <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Susano\Desktop\tlo.png"/>
+       <Grid.Background>
+            <ImageBrush ImageSource="Tlo/tlo.png"/>
         </Grid.Background>
             
          <!--Menu-->
