@@ -12,10 +12,10 @@
             <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Susano\Desktop\tlo.png"/>
+            <ImageBrush ImageSource="Tlo/tlo.png"/>
         </Grid.Background>
-            
-         <!--Menu-->
+
+        <!--Menu-->
         <Menu Margin="61,7,82,375" Grid.Column="1">
             <MenuItem Header="Plik">
                 <MenuItem Header="O programie" Height="17" Margin="0,0,-21,0" Click="info"/>
@@ -68,20 +68,21 @@
                 Click="systemBinarny_Click"/>
         <Button x:Name="czysc" Content="C" BorderBrush="{x:Null}" Background="{x:Null}" Margin="120,245,23,125" Width="30" Height="30" Grid.Column="1" 
                 Click="czyszczenie_Click"/>
-        <TextBox x:Name="Wynik" HorizontalAlignment="Left" TextChanged="Wynik_TextChanged"  Height="49" Margin="30,86,0,0" 
+        <TextBox x:Name="Wynik" HorizontalAlignment="Left" TextChanged="Wynik_TextChanged"  Height="111" Margin="30,24,0,0" 
         	TextWrapping="Wrap" VerticalAlignment="Top" Width="184" 
         	Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
-        
+
 
         <!--Funkcje okresowe-->
-        <Button x:Name="s" Content="sin(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,61,19,309" Height="30" Grid.Column="1" 
+        <Button x:Name="sin" Content="sin(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,61,19,309" Height="30" Grid.Column="1" 
                 Click="sin_Click"/>
         <Button x:Name="cos" Content="cos(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,105,19,265" Height="30" Grid.Column="1"
                 Click="cos_Click"/>
         <Button x:Name="tg" Content="tan(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,154,19,216" Height="30" Grid.Column="1"
-                Click="tan_Click"/> 
+                Click="tan_Click"/>
         <Button x:Name="ctg" Content="ctg(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,199,19,171" Height="30" Grid.Column="1"
-                Click="ctan_Click"/> 
-        
+                Click="ctan_Click"/>
+
+
     </Grid>
 </Window>

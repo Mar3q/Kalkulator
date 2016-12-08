@@ -40,28 +40,11 @@ namespace Kalkulator
             #region funkcje okresowe
             if (działanie == 's')
             {
-                double degrees = operand1;
-                double angle = Math.PI * degrees / 180.0;
-                return Math.Sin(angle);
+                return Math.Sin(operand1 * Math.PI / 180); //Zakladamy, że argument będzie podany w radianach.
             }
             if (działanie == 'c')
             {
-                double degrees = operand1;
-                double angle = Math.PI * degrees / 180.0;
-                return Math.Cos(angle);
-            }
-            if (działanie == 't')
-            {
-                double degrees = operand1;
-                double angle = Math.PI * degrees / 180.0;
-                return Math.Tan(angle);
-            }
-            if (działanie == 'g')
-            {
-                double degrees = operand1;
-                double angle = Math.PI * degrees / 180.0;
-                return 1/Math.Tan(angle);
-
+                return Math.Cos(operand1 * Math.PI / 180); //Zakladamy, że argument będzie podany w radianach.
             }
             #endregion
             else

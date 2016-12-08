@@ -19,7 +19,7 @@ namespace Kalkulator
     {
         Obliczenia obliczenia = new Obliczenia();
         bool gdzieWpisać = true;
-        bool czyWyczyścićPasekWyniku = false;//jeśli jest równe true, to przy wpisaniu liczby pasek wyniku zostanie wyczyszczony
+        bool CzyscOknoWyniku = false;
         #region Okienko
         public MainWindow()
         {
@@ -47,16 +47,16 @@ namespace Kalkulator
         #endregion 
         private void liczba_Click(object sender, RoutedEventArgs e)
         {
-            if (czyWyczyścićPasekWyniku)
+            if (CzyscOknoWyniku)
                 Wynik.Text = (sender as Button).Content.ToString();//pozdrowienia dla Jim1961 http://www.dobreprogramy.pl/Description_1/Piszemy-prosty-kalkulator-w-CNET,39126.html#komentarz_1116074
             else
                 Wynik.Text += (sender as Button).Content.ToString();
-            czyWyczyścićPasekWyniku = false;
+            CzyscOknoWyniku = false;
         }
         private void działanie_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = (sender as Button).Content.ToString()[0];
-            czyWyczyścićPasekWyniku = true;//czyścimy pasek tekstowy
+            CzyscOknoWyniku = true;//czyścimy pasek tekstowy
             gdzieWpisać = false;
         }
         private void silnia_Click(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ namespace Kalkulator
             gdzieWpisać = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
-            czyWyczyścićPasekWyniku = true;
+            CzyscOknoWyniku = true;
         }
         private void systemBinarny_Click(object sender, RoutedEventArgs e)
         {
@@ -73,18 +73,18 @@ namespace Kalkulator
         }
         private void przecinek_Click(object sender, RoutedEventArgs e)
         {
-            if (czyWyczyścićPasekWyniku)
+            if (CzyscOknoWyniku)
                 Wynik.Text = "0,";
             else
                 Wynik.Text += ",";
-            czyWyczyścićPasekWyniku = false;
+            CzyscOknoWyniku = false;
         }
         private void czyszczenie_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.operand1 = obliczenia.operand2 = 0;
             obliczenia.działanie = ' ';
             Wynik.Text = "";
-            czyWyczyścićPasekWyniku = false;
+            CzyscOknoWyniku = false;
             gdzieWpisać = true;
         }
         private void wynik_Click(object sender, RoutedEventArgs e)
@@ -92,7 +92,7 @@ namespace Kalkulator
             gdzieWpisać = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
-            czyWyczyścićPasekWyniku = true;
+            CzyscOknoWyniku = true;
         }
         private void Wynik_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -111,14 +111,14 @@ namespace Kalkulator
                     MessageBox.Show("Nie wpisano prawidłowo liczby", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);//komunikat o błędzie, ale tylko, jeśli pole nie jest puste
             }
         }
-
+        #region funkcje okresowe
         private void sin_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = 's';
             gdzieWpisać = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
-            czyWyczyścićPasekWyniku = true;
+            CzyscOknoWyniku = true;
 
         }
         private void cos_Click(object sender, RoutedEventArgs e)
@@ -127,29 +127,34 @@ namespace Kalkulator
             gdzieWpisać = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
-            czyWyczyścićPasekWyniku = true;
+            CzyscOknoWyniku = true;
 
         }
         private void tan_Click(object sender, RoutedEventArgs e)
         {
-            obliczenia.działanie = 't';
-            gdzieWpisać = true;
-            obliczenia.operand1 = obliczenia.licz();
-            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
-            czyWyczyścićPasekWyniku = true;
-
-           
+        gdzieWpisać = true;
+            if (Wynik.Text.Length > 0)
+            {
+                if ((double.Parse(Wynik.Text)) % 90 != 0) //dla tg dziedzina nie zawiera k*90 stopni, dla k=0,1..
+                    Wynik.Text = Math.Tan(double.Parse(Wynik.Text) * Math.PI / 180).ToString(); //Zakladamy, że argument będzie podany w radianach.
+                else
+                    Wynik.Text = "Error! Incorrect value!";
+            }
+        CzyscOknoWyniku = true;
         }
-
         private void ctan_Click(object sender, RoutedEventArgs e)
         {
-            obliczenia.działanie = 'g';
             gdzieWpisać = true;
-            obliczenia.operand1 = obliczenia.licz();
-            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
-            czyWyczyścićPasekWyniku = true;
+            if (Wynik.Text.Length > 0)
+            {
+                if ((double.Parse(Wynik.Text)) % 180 != 0) //dla ctg dziedzina nie zawiera k*180 stopni, dla k=0,1..
+                    Wynik.Text = (1 / Math.Tan(double.Parse(Wynik.Text) * Math.PI / 180)).ToString();// bo ctg=1/tg
+                else
+                    Wynik.Text = "Error! Incorrect value!";
+            }
+            CzyscOknoWyniku = true;
         }
+        #endregion
 
-        
     }
 }
