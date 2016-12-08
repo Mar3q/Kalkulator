@@ -14,36 +14,62 @@
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\Susano\Desktop\tlo.png"/>
         </Grid.Background>
-        
+
         <!--Operandy-->
-        <Button x:Name="zero" Content="0" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,308,87,62" Width="30" Height="30"/>
-        <Button x:Name="jeden" Content="1" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,262,87,108" Width="30" Height="30"/>
-        <Button x:Name="dwa" Content="2" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,262,40,108" Width="30" Height="30" RenderTransformOrigin="1.1,0.6"/>
-        <Button x:Name="trzy" Content="3" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,262,164,108" Width="30" Height="30" Grid.ColumnSpan="2"/>
-        <Button x:Name="cztery" Content="4" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,215,87,155" Width="30" Height="30"/>
-        <Button x:Name="piec" Content="5" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,215,40,155" Width="30" Height="30" RenderTransformOrigin="0.167,-0.133"/>
-        <Button x:Name="szesc" Content="6" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,215,164,155" Width="30" Height="30" Grid.ColumnSpan="2"/>
-        <Button x:Name="siedem" Content="7" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,169,0,201" Width="30" Height="30" HorizontalAlignment="Left"/>
-        <Button x:Name="osiem" Content="8" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,169,40,201" Width="30" Height="30"/>
-        <Button x:Name="dziewiec" Content="9" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,169,164,201" Width="30" Height="30" Grid.ColumnSpan="2"/>
-        
+        <Button x:Name="zero" Content="0" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,308,87,62" Width="30" Height="30" 
+                Click="liczba_Click"/>
+        <Button x:Name="jeden" Content="1" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,262,87,108" Width="30" Height="30" 
+                Click="liczba_Click"/>
+        <Button x:Name="dwa" Content="2" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,262,40,108" Width="30" Height="30" RenderTransformOrigin="1.1,0.6" 
+                Click="liczba_Click"/>
+        <Button x:Name="trzy" Content="3" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,262,164,108" Width="30" Height="30" Grid.ColumnSpan="2" 
+                Click="liczba_Click"/>
+        <Button x:Name="cztery" Content="4" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,215,87,155" Width="30" Height="30"
+                Click="liczba_Click"/>
+        <Button x:Name="piec" Content="5" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,215,40,155" Width="30" Height="30" RenderTransformOrigin="0.167,-0.133"
+                Click="liczba_Click"/>
+        <Button x:Name="szesc" Content="6" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,215,164,155" Width="30" Height="30" Grid.ColumnSpan="2"
+                Click="liczba_Click"/>
+        <Button x:Name="siedem" Content="7" BorderBrush="#FF404040" Background="{x:Null}" Margin="60,169,0,201" Width="30" Height="30" HorizontalAlignment="Left"
+                Click="liczba_Click"/>
+        <Button x:Name="osiem" Content="8" BorderBrush="#FF404040" Background="{x:Null}" Margin="107,169,40,201" Width="30" Height="30" 
+                Click="liczba_Click"/>
+        <Button x:Name="dziewiec" Content="9" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,169,164,201" Width="30" Height="30" Grid.ColumnSpan="2" 
+                Click="liczba_Click"/>
+
         <!--Funkcje podstawowe-->
-        <Button x:Name="kropka" Content="." BorderBrush="#FF404040" Background="{x:Null}" Margin="107,308,40,62" Width="30" Height="30"/>
-        <Button x:Name="rowna" Content="=" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,308,164,62" Width="30" Height="30" Grid.ColumnSpan="2"/>
-        <Button x:Name="dzielenie" Content="/" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,61,68,309" Width="30" Height="30" Grid.Column="1"/>
-        <Button x:Name="mnozenie" Content="*" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,107,68,263" Width="30" Height="30" Grid.Column="1"/>
-        <Button x:Name="potega" Content="^" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,199,68,171" Width="30" Height="30" Grid.Column="1"/>
-        <Button x:Name="silnia" Content="n!" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,154,68,216" Width="30" Height="30" Grid.Column="1"/>
-        <Button x:Name="dodawanie" Content="+" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,246,68,124" Width="30" Height="30" Grid.Column="1"/>
-        <Button x:Name="odejmowanie" Content="-" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,288,68,82" Width="30" Height="30" Grid.Column="1"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="108" Margin="34,29,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="177" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
-        <Button x:Name="czysc" Content="C" BorderBrush="{x:Null}" Background="{x:Null}" Margin="120,245,23,125" Width="30" Height="30" Grid.Column="1"/>
-        
+        <Button x:Name="dzielenie" Content="/" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,61,68,309" Width="30" Height="30" Grid.Column="1" 
+                Click="działanie_Click" />
+        <Button x:Name="mnozenie" Content="*" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,107,68,263" Width="30" Height="30" Grid.Column="1" 
+                Click="działanie_Click"/>
+        <Button x:Name="dodawanie" Content="+" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,246,68,124" Width="30" Height="30" Grid.Column="1" 
+                Click="działanie_Click"/>
+        <Button x:Name="odejmowanie" Content="-" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,288,68,82" Width="30" Height="30" Grid.Column="1" 
+                Click="działanie_Click"/>
+        <Button x:Name="kropka" Content="." BorderBrush="#FF404040" Background="{x:Null}" Margin="107,308,40,62" Width="30" Height="30" 
+                Click="przecinek_Click"/>
+        <Button x:Name="rowna" Content="=" BorderBrush="#FF404040" Background="{x:Null}" Margin="156,308,164,62" Width="30" Height="30" Grid.ColumnSpan="2" 
+                Click="wynik_Click"/>
+        <Button x:Name="potega" Content="^" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,199,68,171" Width="30" Height="30" Grid.Column="1" />
+        <Button x:Name="silnia" Content="!" BorderBrush="{x:Null}" Background="{x:Null}" Margin="75,154,68,216" Width="30" Height="30" Grid.Column="1" />
+        <Button x:Name="czysc" Content="C" BorderBrush="{x:Null}" Background="{x:Null}" Margin="120,245,23,125" Width="30" Height="30" Grid.Column="1" 
+                Click="czyszczenie_Click"/>
+        <TextBox x:Name="Pamiec" HorizontalAlignment="Left" Height="37" Margin="86,25,0,0" 
+                 TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="63" 
+                 Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="-0.19,0.541"/>
+        <TextBox x:Name="Operacja" HorizontalAlignment="Left" Height="37" Margin="149,25,0,0" 
+                 TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="65" 
+                 Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Wynik" HorizontalAlignment="Left" Height="49" Margin="30,86,0,0" 
+        	TextWrapping="Wrap" VerticalAlignment="Top" Width="184" 
+        	Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+
         <!--Funkcje okresowe-->
         <Button x:Name="sin" Content="sin(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,61,19,309" Height="30" Grid.Column="1"/>
         <Button x:Name="cos" Content="cos(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,105,19,265" Height="30" Grid.Column="1"/>
         <Button x:Name="tg" Content="tan(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,154,19,216" Height="30" Grid.Column="1"/>
         <Button x:Name="ctg" Content="ctg(x)" BorderBrush="{x:Null}" Background="{x:Null}" Margin="118,199,19,171" Height="30" Grid.Column="1"/>
+
 
     </Grid>
 </Window>
