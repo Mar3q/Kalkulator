@@ -95,9 +95,7 @@ namespace Kalkulator
             CzyscOknoWyniku = true;
         }
         private void Wynik_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-
+        {   
             try
             {
                 if (gdzieWpisać)
