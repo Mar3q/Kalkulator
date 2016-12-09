@@ -19,7 +19,7 @@ namespace Kalkulator
     {
         Obliczenia obliczenia = new Obliczenia();
         bool gdzieWpisać = true;
-        bool CzyscOknoWyniku = false;
+        bool czyWyczyścićPasekWyniku = false;//jeśli jest równe true, to przy wpisaniu liczby pasek wyniku zostanie wyczyszczony
         #region Okienko
         public MainWindow()
         {
@@ -47,7 +47,7 @@ namespace Kalkulator
         #endregion 
         private void liczba_Click(object sender, RoutedEventArgs e)
         {
-            if (CzyscOknoWyniku)
+            if (czyWyczyścićPasekWyniku)
                 Wynik.Text = (sender as Button).Content.ToString();//pozdrowienia dla Jim1961 http://www.dobreprogramy.pl/Description_1/Piszemy-prosty-kalkulator-w-CNET,39126.html#komentarz_1116074
             else
                 Wynik.Text += (sender as Button).Content.ToString();
