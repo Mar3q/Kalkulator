@@ -19,7 +19,7 @@ namespace Kalkulator
     {
         Obliczenia obliczenia = new Obliczenia();
         bool gdzieWpisać = true;
-        bool czyWyczyścićPasekWyniku = false;//jeśli jest równe true, to przy wpisaniu liczby pasek wyniku zostanie wyczyszczony
+        bool CzyscOknoWyniku = false;
         #region Okienko
         public MainWindow()
         {
@@ -44,10 +44,10 @@ namespace Kalkulator
         {
             MessageBox.Show("Nazwa programu: Kalkulator \nAutorzy: Mariusz Bubrowski i Marek Dąbrowski");
         }
-        #endregion 
+        #endregion
         private void liczba_Click(object sender, RoutedEventArgs e)
         {
-            if (czyWyczyścićPasekWyniku)
+            if (CzyscOknoWyniku)
                 Wynik.Text = (sender as Button).Content.ToString();//pozdrowienia dla Jim1961 http://www.dobreprogramy.pl/Description_1/Piszemy-prosty-kalkulator-w-CNET,39126.html#komentarz_1116074
             else
                 Wynik.Text += (sender as Button).Content.ToString();
@@ -132,7 +132,7 @@ namespace Kalkulator
         }
         private void tan_Click(object sender, RoutedEventArgs e)
         {
-        gdzieWpisać = true;
+            gdzieWpisać = true;
             if (Wynik.Text.Length > 0)
             {
                 if ((double.Parse(Wynik.Text)) % 90 != 0) //dla tg dziedzina nie zawiera k*90 stopni, dla k=0,1..
@@ -140,7 +140,7 @@ namespace Kalkulator
                 else
                     Wynik.Text = "Error! Incorrect value!";
             }
-        CzyscOknoWyniku = true;
+            CzyscOknoWyniku = true;
         }
         private void ctan_Click(object sender, RoutedEventArgs e)
         {
