@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:Kalkulator"
         mc:Ignorable="d"
         Title="Kalkulator" Height="400" Width="350" Background="{x:Null}" Foreground="{x:Null}"  ResizeMode="CanMinimize" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"  >
-        <Grid IsHitTestVisible="True" SnapsToDevicePixels="True" >
-        
+    <Grid IsHitTestVisible="True" SnapsToDevicePixels="True" >
+
         <!--Definicje kolumn-->
         <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="177*"/>
-        <ColumnDefinition Width="173*"/>
+            <ColumnDefinition Width="177*"/>
+            <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
-            
+
         <!--Tlo-->
         <Grid.Background>
             <ImageBrush ImageSource="Tlo/tlo.png"/>
         </Grid.Background>
-            
+
         <!--Menu-->
         <Menu Margin="40,9,75,364">
             <MenuItem Header="Plik" Width="62" Height="27">
@@ -31,11 +31,11 @@
                 <MenuItem Header="Zamknij" Height="25" Margin="0,0,1,0" Click="zamykanie"/>
             </MenuItem>
         </Menu>
-            
+
         <!--Okienko wyswietlajace-->
-        <TextBox x:Name="Wynik" HorizontalAlignment="Left" TextChanged="Wynik_TextChanged"  Height="49" Margin="68,86,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="184" 
-                Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Wynik" HorizontalAlignment="Left" TextChanged="Zmiana_Wyniku"  Height="86" Margin="68,89,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="205" 
+                Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2" FontSize="24" FontFamily="Arial Black"/>
 
         <!--Operandy-->
         <Button x:Name="zero" Content="0" BorderBrush="#FF404040" Background="{x:Null}" Margin="56,320,91,50" Width="30" Height="30" 
@@ -58,7 +58,7 @@
             Click="liczba_Click"/>
         <Button x:Name="dziewiec" Content="9" BorderBrush="#FF404040" Background="{x:Null}" Margin="136,200,11,170" Width="30" Height="30" 
             Click="liczba_Click"/>
-        
+
         <!--Funkcje podstawowe-->
         <Button x:Name="dzielenie" Content="/" BorderBrush="#FF404040" Background="{x:Null}" Margin="176,200,144,170" Width="30" Height="30" 
             Click="działanie_Click" Grid.ColumnSpan="2" />
@@ -90,6 +90,7 @@
             Click="tan_Click" FontSize="10"/>
         <Button x:Name="ctg" Content="ctg(x)" BorderBrush="#FF404040" Background="{x:Null}" Margin="80,320,63,50" Height="30" Width="30" Grid.Column="1"
             Click="ctan_Click" FontSize="10"/>
-            
+
     </Grid>
 </Window>
+
