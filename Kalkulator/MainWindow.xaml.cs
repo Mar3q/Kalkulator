@@ -18,13 +18,14 @@ namespace Kalkulator
     public partial class MainWindow : Window
     {
         Obliczenia obliczenia = new Obliczenia();
-        bool gdzieWpisać = true;
-        bool CzyscOknoWyniku = false;
+        bool czyWpisac = false;         //zmienna pomocnicza do sprawdzania prawidlowosci wprowadzonych danych
+        bool CzyscOknoWyniku = true;    //zmienna pomocnicza do czyszczenia okna po wyjsciu z danego zdarzenia, w zaleznosci od przyjmowanej wartosci
         #region Okienko
         public MainWindow()
         {
             InitializeComponent();
         }
+        // funkcja ktora umozliwa "ruch" okienkiem
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -44,11 +45,15 @@ namespace Kalkulator
         {
             MessageBox.Show("Nazwa programu: Kalkulator \nAutorzy: Mariusz Bubrowski i Marek Dąbrowski");
         }
+        private void obsluga(object sender, EventArgs e)
+        {
+            MessageBox.Show("W pierwszej kolejności wpisujemy liczby, następnie interesującą nas funkcje");
+        }
         #endregion
         private void liczba_Click(object sender, RoutedEventArgs e)
         {
             if (CzyscOknoWyniku)
-                Wynik.Text = (sender as Button).Content.ToString();//pozdrowienia dla Jim1961 http://www.dobreprogramy.pl/Description_1/Piszemy-prosty-kalkulator-w-CNET,39126.html#komentarz_1116074
+                Wynik.Text = (sender as Button).Content.ToString();
             else
                 Wynik.Text += (sender as Button).Content.ToString();
             CzyscOknoWyniku = false;
@@ -56,15 +61,15 @@ namespace Kalkulator
         private void działanie_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = (sender as Button).Content.ToString()[0];
-            CzyscOknoWyniku = true;//czyścimy pasek tekstowy
-            gdzieWpisać = false;
+            CzyscOknoWyniku = true; //czyścimy pasek tekstowy
+            czyWpisac = false;
         }
         private void silnia_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = '!';
-            gdzieWpisać = true;
+            czyWpisac = true;
             obliczenia.operand1 = obliczenia.licz();
-            Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
+            Wynik.Text = obliczenia.operand1.ToString(); //wyświetlamy wynik
             CzyscOknoWyniku = true;
         }
         private void systemBinarny_Click(object sender, RoutedEventArgs e)
@@ -81,15 +86,15 @@ namespace Kalkulator
         }
         private void czyszczenie_Click(object sender, RoutedEventArgs e)
         {
-            obliczenia.operand1 = obliczenia.operand2 = 0;
-            obliczenia.działanie = ' ';
+            //obliczenia.operand1 = obliczenia.operand2 = 0;
+            //obliczenia.działanie = ' ';
             Wynik.Text = "";
-            CzyscOknoWyniku = false;
-            gdzieWpisać = true;
+            //CzyscOknoWyniku = false;
+            //czyWpisac = true;
         }
         private void wynik_Click(object sender, RoutedEventArgs e)
         {
-            gdzieWpisać = true;
+            czyWpisac = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
             CzyscOknoWyniku = true;
@@ -98,12 +103,12 @@ namespace Kalkulator
         {   
             try
             {
-                if (gdzieWpisać)
+                if (czyWpisac)
                     obliczenia.operand1 = double.Parse(Wynik.Text);
                 else
                     obliczenia.operand2 = double.Parse(Wynik.Text);
             }
-            catch (FormatException wyjątek)//jeśli wprowadzono błędnie liczbę wykonuje poniższy kod
+            catch (FormatException wyjątek) //jeśli wprowadzono błędnie liczbę wykonuje poniższy kod
             {
                 if (Wynik.Text != "")
                     MessageBox.Show("Nie wpisano prawidłowo liczby", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);//komunikat o błędzie, ale tylko, jeśli pole nie jest puste
@@ -113,7 +118,7 @@ namespace Kalkulator
         private void sin_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = 's';
-            gdzieWpisać = true;
+            czyWpisac = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
             CzyscOknoWyniku = true;
@@ -122,7 +127,7 @@ namespace Kalkulator
         private void cos_Click(object sender, RoutedEventArgs e)
         {
             obliczenia.działanie = 'c';
-            gdzieWpisać = true;
+            czyWpisac = true;
             obliczenia.operand1 = obliczenia.licz();
             Wynik.Text = obliczenia.operand1.ToString();//wyświetlamy wynik
             CzyscOknoWyniku = true;
@@ -130,7 +135,7 @@ namespace Kalkulator
         }
         private void tan_Click(object sender, RoutedEventArgs e)
         {
-            gdzieWpisać = true;
+            czyWpisac = true;
             if (Wynik.Text.Length > 0)
             {
                 if ((double.Parse(Wynik.Text)) % 90 != 0) //dla tg dziedzina nie zawiera k*90 stopni, dla k=0,1..
@@ -142,7 +147,7 @@ namespace Kalkulator
         }
         private void ctan_Click(object sender, RoutedEventArgs e)
         {
-            gdzieWpisać = true;
+            czyWpisac = true;
             if (Wynik.Text.Length > 0)
             {
                 if ((double.Parse(Wynik.Text)) % 180 != 0) //dla ctg dziedzina nie zawiera k*180 stopni, dla k=0,1..

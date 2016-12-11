@@ -20,13 +20,15 @@
         </Grid.Background>
             
         <!--Menu-->
-        <Menu Margin="44,9,84,373">
-            <MenuItem Header="Plik" Width="49">
-                <MenuItem Header="O programie" Height="17" Margin="0,0,-21,0" Click="info"/>
+        <Menu Margin="40,9,75,364">
+            <MenuItem Header="Plik" Width="62" Height="27">
+                <MenuItem Header="O programie" Height="25" Margin="0,0,-21,0" Click="info"/>
                 <Separator/>
-                <MenuItem Header="Minimalizuj" Height="17" Margin="0,0,-21,0" Click="minimalizacja"/>
+                <MenuItem Header="Obsługa programu" Height="25" Margin="0,0,-21,0" Click="obsluga"/>
                 <Separator/>
-                <MenuItem Header="Zamknij" Height="17" Margin="0,0,-21,0" Click="zamykanie"/>
+                <MenuItem Header="Minimalizuj" Height="25" Margin="0,0,-21,0" Click="minimalizacja"/>
+                <Separator/>
+                <MenuItem Header="Zamknij" Height="25" Margin="0,0,1,0" Click="zamykanie"/>
             </MenuItem>
         </Menu>
             
