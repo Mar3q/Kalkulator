@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kalkulator
 {
-    public class Obliczenia : IDisposable,IObliczanie //IDisposable zwalniania zaalokowane zasoby
+    public class Obliczenia : IDisposable  //IDisposable zwalniania zaalokowane zasoby
     {
         #region Zmienne
         protected internal double operand1 = 0;//zmienne na których będziemy wykonywać operacje
