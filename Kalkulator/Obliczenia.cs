@@ -82,7 +82,7 @@ namespace Kalkulator
             {
                 // Zwalnianie zasobów zarządzanych
             }
-            // Zwalnianie zasobów nierządzanych
+                // Zwalnianie zasobów nierządzanych
             m_bIsDisposed = true;
         }
         #endregion
